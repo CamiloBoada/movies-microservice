@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class Page {
+public class PageMovie {
     private int page;
     @JsonProperty("per_page")
     private int perPage;

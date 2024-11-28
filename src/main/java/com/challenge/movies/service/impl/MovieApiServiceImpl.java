@@ -1,7 +1,7 @@
 package com.challenge.movies.service.impl;
 
-import com.challenge.movies.Constant;
-import com.challenge.movies.dto.response.Page;
+import com.challenge.movies.util.Constant;
+import com.challenge.movies.dto.response.PageMovie;
 import com.challenge.movies.service.MovieApiService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -38,7 +38,7 @@ public class MovieApiServiceImpl implements MovieApiService {
     }
 
     @Override
-    public Page getMovies(int page) throws JsonProcessingException {
+    public PageMovie getMovies(int page) throws JsonProcessingException {
         return objectMapper.readValue(webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path(endpoint)
@@ -46,6 +46,6 @@ public class MovieApiServiceImpl implements MovieApiService {
                         .build())
                 .retrieve()
                 .bodyToMono(String.class)
-                .block(), Page.class);
+                .block(), PageMovie.class);
     }
 }
