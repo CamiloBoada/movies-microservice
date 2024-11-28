@@ -1,16 +1,12 @@
-package com.movies.model;
+package com.challenge.movies.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class MovieResponse {
+public class Page {
     private int page;
     @JsonProperty("per_page")
     private int perPage;

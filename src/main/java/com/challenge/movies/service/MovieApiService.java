@@ -1,7 +1,8 @@
 package com.challenge.movies.service;
 
-import com.challenge.movies.dto.response.MovieResponse;
+import com.challenge.movies.dto.response.Page;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 public interface MovieApiService {
-    String getMovies(int page);
+    Page getMovies(int page) throws JsonProcessingException;
 }
