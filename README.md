@@ -66,6 +66,8 @@ Clone the repository and navigate to the project directory:
 ```bash
 git clone https://github.com/CamiloBoada/movies-microservice.git
 cd movies-microservice
+```
 
+## Sequence Diagram
 
-
+![Sequence Diagram](sequence-diagram.jpg)
