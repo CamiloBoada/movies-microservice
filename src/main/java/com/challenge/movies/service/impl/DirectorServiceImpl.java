@@ -2,6 +2,7 @@ package com.challenge.movies.service.impl;
 
 import com.challenge.movies.dto.response.Director;
 import com.challenge.movies.dto.response.PageMovie;
+import com.challenge.movies.exception.NotFoundMoviesException;
 import com.challenge.movies.service.DirectorService;
 import com.challenge.movies.service.MovieApiService;
 import com.challenge.movies.util.Constant;
@@ -37,6 +38,8 @@ public class DirectorServiceImpl implements DirectorService {
                 totalPages = pageMovie.getTotalPages();
                 pageMovie.getData().forEach(movie ->
                         directors.merge(movie.getDirector(), Constant.ONE, Integer::sum));
+            } else {
+                throw new NotFoundMoviesException("No movies were found when consuming the external service.");
             }
             page++;
         }

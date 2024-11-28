@@ -3,6 +3,7 @@ package com.challenge.movies.service;
 import com.challenge.movies.dto.response.Director;
 import com.challenge.movies.dto.response.Movie;
 import com.challenge.movies.dto.response.PageMovie;
+import com.challenge.movies.exception.NotFoundMoviesException;
 import com.challenge.movies.service.impl.DirectorServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Assertions;
@@ -15,6 +16,7 @@ import org.mockito.MockitoAnnotations;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 
@@ -45,12 +47,10 @@ public class DirectorServiceTest {
     }
 
     @Test
-    void getDirectorsFail() throws JsonProcessingException {
+    void getDirectorsException() throws JsonProcessingException {
 
         when(movieApiService.getMovies(1)).thenReturn(null);
 
-        Director directorResponse = directorService.getDirectors(0);
-
-        Assertions.assertEquals(0, directorResponse.getDirectors().size());
+        assertThrows(NotFoundMoviesException.class, () -> directorService.getDirectors(0));
     }
 }
